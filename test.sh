@@ -277,7 +277,35 @@ echo "Expected output: not defined"
 #   echo -e "${RED}[FAILED]${NC}"
 #fi
 echo
+
+echo "XmestoSpresne100znakyVnazvuabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789abcdefgijklm" >> cities.txt
+echo "Running without parameter (testing city name len == 100)"
+echo "Expected output: \"Enable: ABLOPTXZ\""
  
+OUTPUT="$(./proj1 < cities.txt)"
+echo -n "Your output: "
+echo "\"$OUTPUT\""
+if [ "$OUTPUT" == "Enable: ABLOPTXZ" ]; then
+    echo -e "${GREEN}[OK]${NC}"
+else
+    echo -e "${RED}[FAILED]${NC}"
+    success=false
+fi
+echo
+
+echo "YmestoSviceNEZ100znakyVnazvuabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789abcdefgijklm" >> cities.txt
+echo "Running without parameter (testing city name len > 100)"
+echo "Expected output: error message"
+ 
+OUTPUT="$(./proj1 < cities.txt)"
+if [ $? -eq 0 ]; then
+    echo -e "${RED}[FAILED]${NC}"
+    success=false
+else
+    echo -e "${GREEN}[OK]${NC}"
+fi
+echo
+
 if [ "$success" = true ] ; then
     echo -e "${GREEN}All tests [OK]${NC}"
     echo "Good job"
@@ -285,3 +313,4 @@ else
     echo -e "${RED}Some test [FAILED]${NC}"
     echo "Fix your code!"
 fi
+
