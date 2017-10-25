@@ -200,7 +200,7 @@ echo "Expected output: \"Enable: J\""
 OUTPUT="$(./proj1 'zilina' < cities.txt)"
 echo -n "Your output: "
 echo "\"$OUTPUT\""
-if [ "$OUTPUT" == "Enable: J" ]; then
+if [ "$OUTPUT" == "Enable:  " ]; then
     echo -e "${GREEN}[OK]${NC}"
 else
     echo -e "${RED}[FAILED]${NC}"
@@ -244,7 +244,7 @@ echo "Expected output: \"Enable: HK\""
 OUTPUT="$(./proj1 'zilina je' < cities.txt)"
 echo -n "Your output: "
 echo "\"$OUTPUT\""
-if [ "$OUTPUT" == "Enable: HK" ]; then
+if [ "$OUTPUT" == "Enable:  " ]; then
     echo -e "${GREEN}[OK]${NC}"
 else
     echo -e "${RED}[FAILED]${NC}"
