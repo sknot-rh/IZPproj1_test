@@ -51,6 +51,7 @@ rm cities.txt
 touch cities.txt
 echo "Prcice" >> cities.txt
 echo "Praha" >> cities.txt
+echo "Prachatice" >> cities.txt
 echo "Brno" >> cities.txt
 echo "Bratislava" >> cities.txt
 echo "brankovice" >> cities.txt
@@ -295,16 +296,35 @@ echo
 
 echo "YmestoSviceNEZ100znakyVnazvuabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789abcdefgijklm" >> cities.txt
 echo "Running without parameter (testing city name len > 100)"
-echo "Expected output: error message"
+echo "Expected output: Enable: ABLOPTXYZ"
  
 OUTPUT="$(./proj1 < cities.txt)"
-if [ $? -eq 0 ]; then
+echo -n "Your output: "
+echo "\"$OUTPUT\""
+if [ "$OUTPUT" == "Enable: ABLOPTXYZ" ]; then
+    echo -e "${GREEN}[OK]${NC}"
+else
     echo -e "${RED}[FAILED]${NC}"
     success=false
-else
-    echo -e "${GREEN}[OK]${NC}"
 fi
 echo
+
+
+# could anybody doublecheck this?
+echo "Running without parameter (testing city name len > 100, cutting name)"
+echo "Expected output: Found: YMESTOSVICENEZ100ZNAKYVNAZVUABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ123456789ABCDEFGIJKL"
+ 
+OUTPUT="$(./proj1 Y < cities.txt)"
+echo -n "Your output: "
+echo "\"$OUTPUT\""
+if [ "$OUTPUT" == "Found: YMESTOSVICENEZ100ZNAKYVNAZVUABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ123456789ABCDEFGIJKL" ]; then
+    echo -e "${GREEN}[OK]${NC}"
+else
+    echo -e "${RED}[FAILED]${NC}"
+    success=false
+fi
+echo
+
 
 if [ "$success" = true ] ; then
     echo -e "${GREEN}All tests [OK]${NC}"
