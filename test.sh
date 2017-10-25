@@ -195,7 +195,7 @@ echo
  
  
 echo "Running with parameter \"zilina\" (testing space in city name)"
-echo "Expected output: \"Enable: J\""
+echo "Expected output: \"Enable:  \""
  
 OUTPUT="$(./proj1 'zilina' < cities.txt)"
 echo -n "Your output: "
@@ -239,7 +239,7 @@ fi
 echo
  
 echo "Running with parameter \"zilina je\" (testing space in city name)"
-echo "Expected output: \"Enable: HK\""
+echo "Expected output: \"Enable:  \""
  
 OUTPUT="$(./proj1 'zilina je' < cities.txt)"
 echo -n "Your output: "
